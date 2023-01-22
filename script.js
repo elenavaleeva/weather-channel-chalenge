@@ -1,54 +1,41 @@
 const apiKey = 'a71e1dbc556af89167017b8f90cda21e';
-
-
-// elements 
 const form = document.querySelector('#form');
 const input = document.querySelector('#inputCity');
 const content = document.querySelector('.content');
 
-// show history
+
 renderHistory();
 
-// listener 
 form.onsubmit = submitHandler;
 
-// function handler
 function submitHandler (e) {
-	
 	e.preventDefault();
 
-	// clear history
 	content.innerHTML = '';
-
-	
 	let city = input.value.trim();
 
-	// clear input
 	input.value = '';
 
-    // show weather
     showWeather(city);
 }
 
 async function showWeather(city) {
-	// save history
-	saveHistory(city);
 
-	// show history
+	saveHistory(city);
 	renderHistory();
 
-	// getting weather data
 	const cityInfo = await getGeo(city); // 51.5073219 -0.1276474
-    const weatherInfo = await getWeather(cityInfo.lat, cityInfo.lon);
-    const currentWeather = parseCurrentWeather(weatherInfo);
+
+	const weatherInfo = await getWeather(cityInfo.lat, cityInfo.lon);
+	const currentWeather = parseCurrentWeather(weatherInfo);
 	renderCurrentWeather(cityInfo, currentWeather);
-    const nextDaysWeather = findNextDaysWeather(weatherInfo);
-    renderNextDays(nextDaysWeather);
+	const nextDaysWeather = findNextDaysWeather(weatherInfo);
+	renderNextDays(nextDaysWeather);
 };
 
 
 async function getGeo (city) {
-	// https://openweathermap.org/api/geocoding-api
+	`https://openweathermap.org/api/geocoding-api`
 	const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 	const response = await fetch(geoUrl);
 	const data = await response.json();
@@ -108,15 +95,14 @@ function renderCurrentWeather(cityInfo, currentWeather) {
             </div>`;
 
 	content.insertAdjacentHTML('afterbegin', card);
- 
 }
 
 function findNextDaysWeather(findNextDay) {
-    // console.log('today', new Date());
-	// const tomorrow = new Date();
-	// tomorrow.setUTCDate(tomorrow.getDate() + 1);
-    // tomorrow.setUTCHours(12, 0, 0, 0)
-    // console.log('tomorrow', tomorrow);
+    console.log('today', new Date());
+	const tomorrow = new Date();
+	tomorrow.setUTCDate(tomorrow.getDate() + 1);
+    tomorrow.setUTCHours(12, 0, 0, 0)
+    console.log('tomorrow', tomorrow);
 
     const days = []
 
@@ -149,11 +135,8 @@ function renderNextDays (nextDays){
 
 	futureEl.insertAdjacentHTML(
 		'afterbegin',
-		`<h2 class="title-2">Weather Forecast for ${nextDays.length} days</h2>`
-    
+		`<h2 class="title-2">Weather Forecast ${nextDays.length} days</h2>`
 	);
-
-    console.log(nextDays);
 
     const cardsRow = document.createElement('div');
 	cardsRow.classList.add('cards-row');
@@ -171,7 +154,7 @@ function renderNextDays (nextDays){
                             <li class="details__item">${
 								day.weather[0]['main']
 							}</li>
-                            <li class="details__item">${day.wind.speed} м/с</li>
+                            <li class="details__item">${day.wind.speed} m/c</li>
                         </ul>
                     </section>`;
 
@@ -181,6 +164,7 @@ function renderNextDays (nextDays){
     futureEl.insertAdjacentElement('beforeend', cardsRow);
     content.insertAdjacentElement('beforeend', futureEl);
 }
+
 
 function saveHistory(city) {
     let history = [];
@@ -208,14 +192,15 @@ function renderHistory () {
 
 
     for (let item of history) {
-        const button = document.createElement('button');
+        let button = document.createElement('button');
         button.classList.add('history__item');
         button.innerText = item;
 
         button.onclick = () => {
             showWeather(item);
         };
+
+    
         historyWrapper.insertAdjacentElement('beforeend', button);
     }
-
 }
