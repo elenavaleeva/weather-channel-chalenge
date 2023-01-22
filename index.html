@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+
+    <header class="header">
+        <h1 class="header__title">Weather Forecast</h1>
+    </header>
+
+    <main class="main">
+
+        <aside class="sidebar">
+            <form class="form" id="form">
+                <input id="inputCity" class="form__input" type="text" placeholder="inputCity" value="">
+                <button class="form__btn">Search</button>
+            </form>
+
+            <div class="history">
+                <!-- <button class="history__item">London</button>
+                <button class="history__item">New-York</button>
+                <button class="history__item">Paris</button>
+                <button class="history__item">Mexico</button>
+                <button class="history__item">Bergen</button> -->
+            </div>
+        </aside>
+
+        <div class="content">
+            <div class="card card--wide">
+                <h2 class="title">
+                    London
+                    <span class="title__date">01/20/2023</span>
+                    <span class="weather-icon"><img src="./img/example.png" alt="Weather"></span>
+                </h2>
+
+                <ul class="details">
+                    <li class="details__item">11°c</li>
+                    <li class="details__item">cloudy</li>
+                    <li class="details__item">wind 2 m/h</li>
+                </ul>
+            </div>
+
+            <section class="future">
+                <!-- <h2 class="title-2">Weather Forecast for 5 days</h2> -->
+                <div class="cards-row">
+                    <section class="card">
+                        <h3 class="title-date">01/21/2023</h3>
+                        <div class="weather-icon"><img src="./img/example.png" alt="Weather"></div>
+                        <ul class="details">
+                            <li class="details__item">11°c</li>
+                            <li class="details__item">cloudy</li>
+                            <li class="details__item">wind 2 m/h</li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- <div class="card">
+        <h2 class="card-city">London <span>GB</span></h2>
+
+        <div class="card-weather">
+            <div class="card-value">11<sup>°c</sup></div>
+            <img class="card-img" src="./img/example.png" alt="Weather">
+        </div>
+
+        <div class="card-description">Cloud</div>
+    </div> -->
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
