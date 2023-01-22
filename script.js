@@ -35,8 +35,8 @@ async function showWeather(city) {
 
 
 async function getGeo (city) {
-	`https://openweathermap.org/api/geocoding-api`
-	const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+	`http://openweathermap.org/api/geocoding-api`
+	const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 	const response = await fetch(geoUrl);
 	const data = await response.json();
     console.log('getGeo', data);
@@ -52,7 +52,7 @@ async function getGeo (city) {
 }
 
 async function getWeather(lat, lon) {
-	const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+	const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 	const response = await fetch(url);
 	const data = await response.json();
 	console.log('getWeather', data);
